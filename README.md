@@ -19,6 +19,7 @@ Instalación de PySpark y Kafka-Python.
   pip install pyspark kafka-python pandas matplotlib
   pip install pyspark kafka-python pandas matplotlib seaborn
 
+
   
 Descarga e instalación de Apache Kafka.
 
@@ -27,25 +28,33 @@ tar -xzf kafka_2.13-3.6.2.tgz
 sudo mv kafka_2.13-3.6.2 /opt/Kafka
 
 
+<img width="1132" height="259" alt="image" src="https://github.com/user-attachments/assets/621093da-87f1-418f-89e0-4b343472182b" />
+
+
+
 # Iniciar Zookeeper
 sudo /opt/Kafka/bin/zookeeper-server-start.sh /opt/Kafka/config/zookeeper.properties &
 
 # Iniciar Kafka
 sudo /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties &
 
+<img width="1078" height="595" alt="image" src="https://github.com/user-attachments/assets/8cf82995-ef6b-486e-aa94-fd76cbc18cec" />
 
 Creamos el canal de comunicación llamado sensor_data
-/opt/kafka/bin/kafka-topics.sh --create \
---bootstrap-server localhost:9092 \
---replication-factor 1 \
---partitions 1 \
---topic sensor_data
+/opt/Kafka/bin/kafka-topics.sh --create \
+  --bootstrap-server localhost:9092 \
+  --replication-factor 1 \
+  --partitions 1 \
+  --topic sensor_data
 
+<img width="1006" height="187" alt="image" src="https://github.com/user-attachments/assets/928f929e-c0a5-461f-8d23-9480e37a06a5" />
 
 
 Verifica que se haya creado correctamente
 /opt/kafka/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
-sensor_data
+
+<img width="1084" height="93" alt="image" src="https://github.com/user-attachments/assets/50e63e82-5931-4935-af72-a3c6441b0bef" />
+
 
 Script del Productor — kafka_producer.py
 

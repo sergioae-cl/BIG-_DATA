@@ -61,6 +61,9 @@ Script del Productor — kafka_producer.py
 mkdir ~/spark_kafka_project
 cd ~/spark_kafka_project
 
+nano kafka_producer.py
+
+
 ```
 import time, json, random
 from kafka import KafkaProducer
@@ -187,6 +190,8 @@ python3 kafka_producer.py
   
 
 Sent: {'sensor_id': 2, 'temperature': 24.55, 'humidity': 63.2, 'timestamp': 1697650000}
+
+<img width="797" height="616" alt="image" src="https://github.com/user-attachments/assets/9bda8570-0a14-49ed-9738-9c7713f50f44" />
 
 
 Ejecutar el consumidor en la otra terminal

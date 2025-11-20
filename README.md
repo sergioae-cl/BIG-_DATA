@@ -1,9 +1,9 @@
 # BIG_DATA
 
 
-Tarea 3
+Tarea 4
 
-El presente es una guía interactiva de autoría propia con el fin de ilustrar el proceso de análisis con spark para un conjunto de  datos, esta no es el reflejo o copia de la guía del anexo, es la guía paso a paso de mi autoría.
+El presente es una guía interactiva de autoría propia con el fin de ilustrar el proceso de creacion de una Base de datos en Mongo para Iustrar un problema practico y mediante cosultas resolver el problema, este guia es de autoria propia autoría.
 
 
 Primero, actualizamos el sistema y verificamos dependencias.

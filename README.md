@@ -9,6 +9,42 @@ El presente es una guía interactiva de autoría propia con el fin de ilustrar e
 Caso de Uso Seleccionado: Catálogo de Productos para E-commerce
 ¿Por qué MongoDB? Un catálogo de productos es el caso de uso para bases de datos orientadas a documentos. Ademas de guardar toda la información del producto (incluyendo comentarios y especificaciones técnicas) en un solo documento, evitando JOINs costosos.
 
+Diseño del Esquema:
+
+Base de Datos: TechStoreDB
+Colección Principal: productos
+
+```
+{
+  "_id": ObjectId("..."),
+  "nombre": "Laptop Gaming X1",
+  "categoria": "Laptops",
+  "precio": 1200.50,
+  "stock": 15,
+  "activo": true,
+  "fecha_lanzamiento": ISODate("2023-01-15T00:00:00Z"),
+  "caracteristicas": {  // Objeto anidado
+    "marca": "TechBrand",
+    "color": "Negro",
+    "peso": "2.5kg"
+  },
+  "etiquetas": ["gaming", "oferta", "alto rendimiento"], // Array
+  "valoraciones": [ // Array de objetos (One-to-Few relationship)
+    {
+      "usuario": "user123",
+      "puntaje": 5,
+      "comentario": "Excelente máquina"
+    }
+  ]
+}
+```
+
+
+
+
+
+
+
 
 
 

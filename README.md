@@ -3,7 +3,7 @@
 
 Tarea 4
 
-El presente es una guía interactiva de autoría propia con el fin de ilustrar el proceso de creacion de una Base de datos en Mongo para Iustrar un problema practico y mediante cosultas resolver el problema, este guia es de autoria propia autoría.
+El presente es una guía interactiva de autoría propia con el fin de ilustrar el proceso de creacion de una Base de datos en MongoDB para recrear un problema practico y mediante cosultas resolver el problema, este guia es de autoria propia.
 
 
 Caso de Uso Seleccionado: Catálogo de Productos para E-commerce
@@ -203,6 +203,42 @@ db.productos.aggregate([
 ```
 
 <img width="738" height="618" alt="image" src="https://github.com/user-attachments/assets/c523db85-35a9-4141-a024-3a41ce1682bb" />
+
+Productos "Premium" Filtrar productos caros y formatear la salida.
+
+```
+db.productos.aggregate([
+    {
+        $match: { precio: { $gt: 1500 } } // Paso 1: Filtrar
+    },
+    {
+        $project: { // Paso 2: Dar formato al resultado
+            producto: "$nombre",
+            precio_con_iva: { $multiply: ["$precio", 1.19] }, // Calcular campo nuevo
+            marca: "$caracteristicas.marca"
+        }
+    }
+]);
+```
+
+<img width="715" height="522" alt="image" src="https://github.com/user-attachments/assets/0e6191c6-8427-4d58-878a-c648865e8d25" />
+
+Documentación
+
+Se eligió un esquema basado en documentos, A diferencia de un modelo relacional donde las características técnicas requerirían una tabla, MongoDB nos permite usar un objeto embebido, en
+este caso seria "caracteristicas".
+
+Tipos de datos: String para nombres y categorías.
+
+Double para precios .
+
+Array para etiquetas .
+
+Object para detalles técnicos y agrupar informacion.
+
+MongoDB permite entrar en objetos anidados directamente en la consulta, lo cual simplifica el filtrado por atributos específicos del producto. insertMany se utiliza para la carga masiva,
+lo cual es mucho más eficiente en rendimiento de red que ejecutar 100 veces insertOne.
+
 
 
 

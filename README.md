@@ -183,6 +183,30 @@ db.productos.find(
 <img width="471" height="645" alt="image" src="https://github.com/user-attachments/assets/04bb9ed5-bdd5-4fdc-b50e-4f3e811ce412" />
 
 
+Consultas de Agregación
+
+Queremos saber cuántos productos hay por categoría y cuál es el precio promedio.
+```
+db.productos.aggregate([
+    {
+        $group: {
+            _id: "$categoria", // Agrupar por el campo categoría
+            total_productos: { $sum: 1 }, // Contar documentos
+            precio_promedio: { $avg: "$precio" }, // Promediar campo precio
+            stock_total: { $sum: "$stock" } // Sumar todo el stock
+        }
+    },
+    {
+        $sort: { precio_promedio: -1 } // Ordenar de mayor a menor precio
+    }
+]);
+```
+
+<img width="738" height="618" alt="image" src="https://github.com/user-attachments/assets/c523db85-35a9-4141-a024-3a41ce1682bb" />
+
+
+
+
 
 
 

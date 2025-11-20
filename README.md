@@ -13,7 +13,7 @@ Diseño del Esquema:
 
 Base de Datos: TechStoreDB
 Colección Principal: productos
-
+Jerarquia de la coleccion:
 ```
 {
   "_id": ObjectId("..."),
@@ -39,6 +39,60 @@ Colección Principal: productos
 }
 ```
 
+Creacion de la BD
+
+Mediante la conexion ala localhost se crea la base de datos con lo siguientes parametros
+
+<img width="632" height="495" alt="image" src="https://github.com/user-attachments/assets/00a3890e-73dc-4e64-b3f8-172e4e5ab831" />
+
+
+Añadir la informacion mediante el sigioente escript que generarar masivamente los registros
+```
+// 1. Usar la base de datos
+use TechStoreDB;
+
+// 3. Script para generar 100 productos
+var categorias = ["Laptops", "Smartphones", "Accesorios", "Monitores", "Audio"];
+var marcas = ["Sony", "Samsung", "Apple", "Dell", "Logitech"];
+var etiquetas_lista = ["oferta", "nuevo", "envio_gratis", "gaming", "oficina", "pro"];
+
+var productos_batch = [];
+
+for (var i = 1; i <= 100; i++) {
+    // Selección aleatoria de datos
+    var cat_random = categorias[Math.floor(Math.random() * categorias.length)];
+    var marca_random = marcas[Math.floor(Math.random() * marcas.length)];
+    var precio_random = parseFloat((Math.random() * 2000 + 10).toFixed(2));
+    var stock_random = Math.floor(Math.random() * 100);
+    
+    // Generar etiquetas aleatorias (1 o 2 etiquetas)
+    var tags = [etiquetas_lista[Math.floor(Math.random() * etiquetas_lista.length)]];
+    if(Math.random() > 0.5) tags.push(etiquetas_lista[Math.floor(Math.random() * etiquetas_lista.length)]);
+
+    var doc = {
+        nombre: "Producto " + cat_random + " " + i,
+        categoria: cat_random,
+        precio: precio_random,
+        stock: stock_random,
+        activo: true,
+        fecha_creacion: new Date(),
+        caracteristicas: {
+            marca: marca_random,
+            garantia: "1 año",
+            origen: "Importado"
+        },
+        etiquetas: tags,
+        rating_promedio: Math.floor(Math.random() * 5) + 1 // 1 a 5 estrellas
+    };
+    productos_batch.push(doc);
+}
+
+// 4. Insertar masivamente
+db.productos.insertMany(productos_batch);
+
+print("¡Éxito! Se han insertado " + db.productos.countDocuments() + " documentos.");
+
+```
 
 
 

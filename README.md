@@ -3,9 +3,6 @@
 
 Tarea 4
 
-El presente es una guía interactiva de autoría propia con el fin de ilustrar el proceso de creacion de una Base de datos en MongoDB para recrear un problema practico y mediante cosultas resolver el problema, este guia es de autoria propia.
-
-
 Caso de Uso Seleccionado: Catálogo de Productos para E-commerce
 ¿Por qué MongoDB? Un catálogo de productos es el caso de uso para bases de datos orientadas a documentos. Ademas de guardar toda la información del producto (incluyendo comentarios y especificaciones técnicas) en un solo documento, evitando JOINs costosos.
 

@@ -228,23 +228,12 @@ Documentación
 Se eligió un esquema basado en documentos, A diferencia de un modelo relacional donde las características técnicas requerirían una tabla, MongoDB nos permite usar un objeto embebido, en
 este caso seria "caracteristicas".
 
-Tipos de datos: String para nombres y categorías.
-
-Double para precios .
-
-Array para etiquetas .
-
-Object para detalles técnicos y agrupar informacion.
-
 MongoDB permite entrar en objetos anidados directamente en la consulta, lo cual simplifica el filtrado por atributos específicos del producto. insertMany se utiliza para la carga masiva,
 lo cual es mucho más eficiente en rendimiento de red que ejecutar 100 veces insertOne.
 
+Diccionario de Datos
 
-
-
-
-
-
+<img width="707" height="437" alt="image" src="https://github.com/user-attachments/assets/88572c38-62c4-4817-9f74-bc5e7f1ed529" />
 
 
 

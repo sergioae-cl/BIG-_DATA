@@ -102,6 +102,7 @@ Aunque mongo procesosa codigos en formato json, el aterior codigo tambien puede 
 
 <img width="330" height="113" alt="image" src="https://github.com/user-attachments/assets/caa82b2f-9bea-4949-a9f4-7a8809f67a7c" />
 
+
 Una ves con con los datos insertados, podemos realizar consultas u operaciones CRUD.
 
 Inserción
@@ -139,6 +140,51 @@ Eliminación
 ```
 db.productos.deleteOne({ nombre: "Auriculares Noise Cancelling" });
 ```
+
+Consultas con Filtros y Operadores
+
+Buscar productos caros (precio mayor a 1000) pero con stock bajo (menos o igual a 10).
+
+```
+db.productos.find({
+    precio: { $gt: 1000 },
+    stock: { $lte: 10 }
+});
+```
+<img width="424" height="552" alt="image" src="https://github.com/user-attachments/assets/a24c773a-cce8-4362-9f9e-c8918f65ba47" />
+
+Búsqueda dentro de Arrays ($in, $all) Buscar productos que tengan la etiqueta "gaming" u "oficina".
+
+```
+db.productos.find({
+    etiquetas: { $in: ["gaming", "oficina"] }
+});
+```
+<img width="666" height="577" alt="image" src="https://github.com/user-attachments/assets/2d5af7c3-977c-4010-a75e-65882756cad3" />
+
+Filtros en Objetos Anidados Buscar productos cuya marca  sea "Apple".
+
+```
+db.productos.find({
+    "caracteristicas.marca": "Apple"
+});
+```
+<img width="579" height="636" alt="image" src="https://github.com/user-attachments/assets/73cae255-8762-45f3-bb31-a185c55d218b" />
+
+
+Proyección Mostrar solo nombre y precio de los productos, ocultando el _id
+
+```
+db.productos.find(
+    { categoria: "Laptops" },
+    { nombre: 1, precio: 1, _id: 0 }
+);
+```
+<img width="471" height="645" alt="image" src="https://github.com/user-attachments/assets/04bb9ed5-bdd5-4fdc-b50e-4f3e811ce412" />
+
+
+
+
 
 
 
